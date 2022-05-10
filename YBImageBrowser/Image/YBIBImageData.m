@@ -292,7 +292,7 @@ static dispatch_queue_t YBIBImageProcessingQueue(void) {
                 if (!self) return;
                 [self.yb_webImageMediator() yb_storeToDiskWithImageData:imageData forKey:self.imageURL];
                 self.loadingStatus = YBIBImageLoadingStatusNone;
-                if (image) {
+                if (image || self.imageURL.absoluteString.length) {
                     [self setOriginImageAndLoadWithImage:image];
                 } else {
                     [self.delegate yb_imageIsInvalidForData:self];
